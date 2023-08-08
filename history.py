@@ -1,6 +1,7 @@
 import requests as client
 from io import BytesIO
 import pandas as pd
+import streamlit as st
 
 class History:
     def __init__(self, etfs, seed):
@@ -74,6 +75,7 @@ class History:
         return score 
 
     @classmethod
+    @st.cache_data(ttl="15m", show_spinner=False)
     def get_history(cls, code):
         URL = 'https://api.finance.naver.com/siseJson.naver'
         params = dict(
