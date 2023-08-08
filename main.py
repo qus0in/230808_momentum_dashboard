@@ -16,5 +16,9 @@ def etf_history():
         st.dataframe(history_table, use_container_width=True)
 
 if __name__ == '__main__':
+    st.set_page_config(
+        page_title='모멘텀 대시보드',
+        page_icon='🏃‍♂️',
+    )   
     etf_table()
     etf_history()
