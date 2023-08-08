@@ -11,7 +11,8 @@ def etf_table():
 def etf_history():
     with st.expander('💯 투자 점수표', expanded=True):
         seed = st.number_input('투자금액', value=80_000_000)
-        history_table = History(st.session_state.universe, seed).table
+        with st.spinner('데이터 분석 및 로딩 중...'):
+            history_table = History(st.session_state.universe, seed).table
         st.dataframe(history_table, use_container_width=True)
 
 if __name__ == '__main__':
