@@ -10,7 +10,7 @@ def etf_table():
 
 def etf_history():
     with st.expander('💯 투자 점수표', expanded=True):
-        seed = st.number_input('투자금액',
+        seed = st.number_input('🥹 투자금액',
             value=80_000_000,
             step=1_000_000)
         with st.spinner('데이터 분석 및 로딩 중...'):
