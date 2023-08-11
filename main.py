@@ -17,7 +17,8 @@ def etf_history():
             history_table = History(st.session_state.universe, seed).table
         st.dataframe(history_table.head(), use_container_width=True)
         with st.expander('🔬 전체 결과 보기'):
-            st.dataframe(history_table.iloc[:, [0,1]], use_container_width=True)
+            pass
+            # st.dataframe(history_table.iloc[:, [0,1]], use_container_width=True)
 
 if __name__ == '__main__':
     st.set_page_config(
