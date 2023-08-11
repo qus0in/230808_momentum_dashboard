@@ -28,9 +28,9 @@ class History:
         }, inplace=True)
         self.table = self.table\
             .loc[:, ['종목명', '위험조정모멘텀', '투자유닛']]\
-            .sort_values('위험조정모멘텀', ascending=False)\
-            .loc[self.table.위험조정모멘텀 > 0]
+            .sort_values('위험조정모멘텀', ascending=False)
         self.table.index.name = '종목코드'
+        
     
     def update_data(self):
         self.data = {
