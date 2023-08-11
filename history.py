@@ -29,7 +29,7 @@ class History:
         self.table = self.table\
             .loc[:, ['종목명', '위험조정모멘텀', '투자유닛']]\
             .sort_values('위험조정모멘텀', ascending=False)\
-            .loc[self.table.위험조정모멘텀 > 0].head()
+            .loc[self.table.위험조정모멘텀 > 0]
         self.table.index.name = '종목코드'
     
     def update_data(self):
