@@ -15,6 +15,7 @@ def etf_history():
             step=1_000_000)
         with st.spinner('⌛️ 데이터 분석 및 로딩 중...'):
             history_table = History(st.session_state.universe, seed).table
+        st.subheader('🐫 듀얼 모멘텀 TOP5')
         st.dataframe(history_table.loc[(history_table.위험조정모멘텀 > 0)
             and (history_table.위험조정모멘텀 > history_table.loc['357870','위험조정모멘텀'])
         ].head(), use_container_width=True)
