@@ -16,9 +16,15 @@ def etf_history():
         with st.spinner('⌛️ 데이터 분석 및 로딩 중...'):
             history_table = History(st.session_state.universe, seed).table
         st.subheader('🐫 듀얼 모멘텀 TOP5')
-        st.dataframe(history_table.loc[(history_table.위험조정모멘텀 > 0)
-            and (history_table.위험조정모멘텀 > history_table.loc['357870','위험조정모멘텀'])
-        ].head(), use_container_width=True)
+        df = history_table.loc[(history_table.위험조정모멘텀 > 0)
+            & (history_table.위험조정모멘텀 > history_table.loc['357870','위험조정모멘텀'])
+        ].head()
+        st.dataframe(df, use_container_width=True)
+        cols = st.columns(len(df))
+        for i in range(len(df)):
+            s = df.head(i+1).투자유닛.sum()
+            cols[i].write(f"**{i+1}종목**")
+            cols[i].write(f"{s}원 ({(s * 100 / seed):.2f}%)")
         st.subheader('📈 수익 모멘텀 종목')
         st.dataframe(history_table.loc[history_table.위험조정모멘텀 > 0].iloc[:, 0:2],
                      height=200, use_container_width=True)
